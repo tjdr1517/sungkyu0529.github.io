@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<defs><radialGradient id="g"><stop stop-color="#3a4553"/><stop offset="1" stop-color="#151521"/></radialGradient></defs>
+<rect width="1200" height="630" fill="url(#g)"/><rect x="47" y="43" width="1106" height="544" rx="32" fill="none" stroke="#696e7f" stroke-width="3"/>
+<rect x="86" y="85" width="286" height="47" rx="14" fill="#d9ff5b"/><text x="107" y="117" font-family="monospace" font-weight="900" font-size="20" fill="#171a24">2027 LUCKY SIGNAL</text>
+<text x="85" y="240" font-family="Arial, sans-serif" font-weight="900" font-size="75" fill="#faf9f1">강원대 합격 기운</text>
+<text x="85" y="345" font-family="Arial, sans-serif" font-weight="900" font-size="96" fill="#d9ff5b">잡았다. ✳</text>
+<path d="M90 366Q300 350 522 365" stroke="#ff77c8" stroke-width="8" fill="none" stroke-linecap="round"/>
+<text x="91" y="440" font-family="Arial, sans-serif" font-weight="800" font-size="33" fill="#fff">이 주파수 맞추면?</text>
+<text x="91" y="490" font-family="Arial, sans-serif" font-size="30" fill="#c5c6d2">일단 기분은 합격임. 📡</text>
+<text x="91" y="553" font-family="monospace" font-size="16" fill="#acafbe">UNOFFICIAL ADMISSION RADIO • ONLY GOOD VIBES</text>
+<circle cx="902" cy="342" r="196" fill="none" stroke="#d9ff5b" stroke-width="15"/>
+<circle cx="902" cy="342" r="165" fill="none" stroke="#ff77c8" stroke-width="2"/>
+<text x="746" y="351" font-family="monospace" font-weight="900" font-size="82" fill="#f9f9f3">102.7</text>
+<text x="858" y="408" font-family="monospace" font-size="35" fill="#d9ff5b">MHz</text></svg>
