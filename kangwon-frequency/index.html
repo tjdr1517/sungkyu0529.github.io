@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#11111b" />
+  <meta name="description" content="강원대학교 합격 기운, 102.7MHz에서 수신 중. 주파수 맞추고 합격 기운 받아가세요 📡 (비공식 응원용)" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="합격 주파수 102.7 FM" />
+  <meta property="og:title" content="강원대 합격 주파수 찾음 📡" />
+  <meta property="og:description" content="이거 들으면 합격하냐고? 일단 기분은 합격임. 102.7 MHz에서 만나." />
+  <meta property="og:image" content="https://tjdr1517.github.io/sungkyu0529.github.io/kangwon-frequency/cover.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>강원대 합격 주파수 📡 | 102.7 FM</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <style>
+    :root {
+      --bg: #11111b; --ink: #f9f8f5; --muted: #aaa9b5;
+      --acid: #d9ff5b; --pink: #ff77c8; --cyan: #86e8ec;
+      --dark: #181923; --panel: #222430; --line: #383b4b;
+      --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+      --font: 'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; min-height: 100vh; color: var(--ink); background: var(--bg); font-family: var(--font); overflow-x: hidden; }
+    button, input { font: inherit; }
+    button { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
+    ::selection { background: var(--acid); color: #11111b; }
+    .texture { position: fixed; inset: 0; pointer-events: none; z-index: 8; opacity: .12; background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 170 170" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency=".82" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23n)" opacity=".4"/%3E%3C/svg%3E'); mix-blend-mode: soft-light; }
+    .glow { position: absolute; border-radius: 100%; filter: blur(90px); pointer-events: none; opacity: .33; z-index: 0; }
+    .glow.a { background: #704a91; width: 440px; height: 450px; top: -200px; left: -240px; }
+    .glow.b { background: #265c64; width: 500px; height: 450px; top: 330px; right: -300px; }
+    .container { position: relative; z-index: 1; width: min(1180px, calc(100% - 44px)); margin: auto; }
+    header { border-bottom: 1px solid #ffffff15; }
+    .nav { min-height: 76px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .brand { display: flex; align-items: center; text-decoration: none; color: var(--ink); gap: 11px; }
+    .brand-mark { width: 39px; height: 39px; display: grid; place-items: center; border: 2px solid #f3f4f0; border-radius: 10px; color: var(--acid); transform: rotate(-8deg); font-size: 21px; box-shadow: 3px 3px 0 #ee79c7; }
+    .brand-text { font-size: 13px; line-height: 1.25; letter-spacing: -.06em; font-weight: 900; }
+    .brand-text span { display: block; color: var(--muted); font: 10px var(--mono); letter-spacing: .1em; margin-top: 3px; }
+    .live-badge { border: 1px solid #555966; border-radius: 50px; padding: 9px 13px; display: flex; align-items: center; gap: 8px; font: 11px var(--mono); color: #e2e3dc; white-space: nowrap; }
+    .dot { background: var(--acid); width: 7px; height: 7px; border-radius: 50%; box-shadow: 0 0 12px var(--acid); animation: pulse 1.8s infinite; }
+    @keyframes pulse { 50% { box-shadow: 0 0 1px var(--acid); opacity: .48; } }
+    main { padding: 72px 0 50px; }
+    .hero { display: grid; grid-template-columns: 1fr 1.01fr; gap: clamp(28px, 6vw, 76px); align-items: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--acid); font: 700 12px var(--mono); letter-spacing: .16em; }
+    .eyebrow:before { content: ''; width: 24px; height: 2px; background: var(--acid); }
+    h1 { margin: 28px 0 25px; font-size: clamp(47px, 5.6vw, 84px); line-height: 1.13; letter-spacing: -.095em; font-weight: 950; word-break: keep-all; }
+    h1 .outlined { color: transparent; -webkit-text-stroke: 1.5px var(--ink); text-shadow: 0 0 transparent; }
+    h1 .acid { color: var(--acid); display: inline-block; position: relative; }
+    h1 .acid:after { content: ''; position: absolute; height: 11px; left: 0; right: 0; bottom: -7px; border-top: 4px solid var(--pink); border-radius: 70% 60% 0 0; transform: rotate(-1deg); }
+    .intro { max-width: 420px; font-size: 16px; line-height: 1.9; color: #cac9d1; font-weight: 500; word-break: keep-all; }
+    .intro strong { color: #fff; }
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 28px; }
+    .chip { display: inline-flex; align-items: center; font-size: 11px; font-weight: 750; padding: 10px 13px; border-radius: 6px; letter-spacing: -.025em; }
+    .chip.acid { color: #24251d; background: var(--acid); transform: rotate(-2deg); }
+    .chip.pink { background: var(--pink); color: #24212b; transform: rotate(2deg); }
+    .chip.outline { border: 1px solid #686974; color: #e3e1e7; }
+    .little-note { font-size: 12px; color: #868895; margin-top: 24px; display: flex; align-items: center; gap: 8px; }
+    .hero-art { position: relative; padding: 18px 0 16px; }
+    .spark { position: absolute; user-select: none; pointer-events: none; }
+    .spark.star1 { right: -17px; top: -25px; color: var(--acid); font-size: 70px; animation: twinkle 6s ease-in-out infinite; }
+    .spark.star2 { left: -29px; bottom: 15px; color: var(--pink); font-size: 40px; animation: twinkle 4s ease-in-out infinite reverse; }
+    @keyframes twinkle { 50% { transform: rotate(26deg) scale(.83); } }
+    .radio { background: #e8e4d9; color: #242634; border-radius: 25px 25px 27px 27px; padding: 20px; transform: rotate(1.1deg); box-shadow: 0 18px 0 #938d89, 0 26px 0 #3c3a42, 0 44px 48px #05050999; border: 2px solid #fffdf4; position: relative; }
+    .radio:before { content: ''; position: absolute; top: 0; left: 20px; right: 20px; height: 5px; border-radius: 0 0 8px 8px; background: #fff; opacity: .7; }
+    .radio-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 3px 5px 14px; }
+    .radio-logo { font: 950 18px var(--font); letter-spacing: -.07em; }
+    .radio-logo small { font: 700 11px var(--mono); color: #71717c; vertical-align: middle; letter-spacing: -.01em; }
+    .radio-top-right { font: 700 9px var(--mono); letter-spacing: .12em; color: #666973; }
+    .screen { background: #1c2830; color: var(--acid); border-radius: 15px; padding: 22px 20px 19px; box-shadow: inset 0 3px 14px #0a1219, 0 2px 0 #eee; position: relative; overflow: hidden; border: 5px solid #494b50; }
+    .screen:after { content: ''; background: repeating-linear-gradient(0deg, transparent 0 3px, #00000012 4px 5px); inset: 0; position: absolute; pointer-events: none; }
+    .screen-head { display: flex; align-items: center; justify-content: space-between; color: #c3d6ce; font: 700 10px var(--mono); letter-spacing: .11em; position: relative; z-index: 1; }
+    .onair { display: inline-flex; align-items: center; gap: 6px; }
+    .onair i { height: 6px; width: 6px; background: var(--pink); border-radius: 50%; box-shadow: 0 0 11px var(--pink); }
+    .hz-row { display: flex; justify-content: center; align-items: baseline; white-space: nowrap; padding-top: 11px; line-height: 1; position: relative; z-index: 1; }
+    .frequency { font: 700 clamp(67px, 8vw, 112px) var(--mono); letter-spacing: -.095em; font-variant-numeric: tabular-nums; text-shadow: 0 0 22px #cfff713b; }
+    .mhz { align-self: end; margin: 0 0 11px 10px; font: 700 16px var(--mono); letter-spacing: -.08em; }
+    .canvas-wrap { position: relative; height: 59px; margin-top: 14px; }
+    #wave { width: 100%; height: 100%; display: block; }
+    .screen-bottom { border-top: 1px solid #5b795a66; padding-top: 11px; display: flex; justify-content: space-between; color: #b2c4aa; font: 10px var(--mono); gap: 12px; position: relative; z-index: 1; }
+    #signalText { text-align: right; color: var(--acid); }
+    .tuning { padding: 20px 5px 0; }
+    .tuning-label { display: flex; justify-content: space-between; align-items: center; font: 800 11px var(--mono); color: #5b5e64; letter-spacing: .08em; }
+    .tuning-label .level { color: #3c4350; display: flex; gap: 5px; align-items: end; }
+    .bars { display: flex; gap: 3px; height: 15px; align-items: end; }
+    .bars i { display: block; width: 5px; height: 6px; background: #b8b8b8; border-radius: 2px 2px 0 0; transition: background .2s; }
+    .bars i:nth-child(2) { height: 9px; } .bars i:nth-child(3) { height: 12px; } .bars i:nth-child(4) { height: 15px; }
+    .bars i.active { background: #222633; }
+    input[type="range"] { --value: 73.5%; width: 100%; appearance: none; display: block; height: 12px; margin: 16px 0 11px; cursor: pointer; border-radius: 12px; background: linear-gradient(90deg, #2e3140 0 var(--value), #b6b6b9 var(--value) 100%); border: 3px solid #d6d1c8; box-shadow: inset 0 1px 3px #999; }
+    input[type="range"]::-webkit-slider-thumb { appearance: none; width: 27px; height: 27px; border: 6px solid #fbf7ed; border-radius: 50%; box-shadow: 0 2px 1px #7f7e84, 0 0 0 2px #262936; background: var(--pink); }
+    input[type="range"]::-moz-range-thumb { width: 15px; height: 15px; border: 6px solid #fbf7ed; border-radius: 50%; box-shadow: 0 2px 1px #7f7e84, 0 0 0 2px #262936; background: var(--pink); }
+    .tick { display: flex; justify-content: space-between; color: #878590; font: 10px var(--mono); padding: 0 3px; }
+    .tick .target { font-weight: 900; color: #343b44; }
+    .radio-actions { display: flex; gap: 10px; align-items: stretch; padding: 22px 3px 4px; }
+    .primary { flex: 1; min-height: 57px; border: 0; background: #242736; color: #fff; font-weight: 900; font-size: 16px; letter-spacing: -.05em; border-radius: 12px; cursor: pointer; transition: transform .12s, background .2s, box-shadow .2s; box-shadow: 0 5px 0 #13151f; }
+    .primary:hover { background: #34374b; }
+    .primary:active { transform: translateY(4px); box-shadow: 0 1px 0 #13151f; }
+    .primary:disabled { opacity: .7; cursor: wait; }
+    .auto { width: 55px; flex-shrink: 0; border-radius: 12px; background: var(--pink); color: #252735; font-size: 24px; border: 0; font-weight: 900; cursor: pointer; box-shadow: 0 5px 0 #b44e89; transition: transform .12s; }
+    .auto:active { transform: translateY(4px); }
+    .radio-bottom { text-align: center; margin: 14px 0 0; font: 700 10px var(--mono); color: #88838a; letter-spacing: .025em; }
+    .side-sticker { position: absolute; right: -34px; bottom: 4px; z-index: 2; border-radius: 100px; height: 100px; width: 100px; background: var(--acid); color: #25272d; font-weight: 950; transform: rotate(14deg); display: flex; justify-content: center; align-items: center; text-align: center; line-height: 1.3; box-shadow: 2px 8px 0 #869d37, 0 20px 30px #0005; border: 2px dashed #2c3122; font-size: 17px; }
+    .strap { margin: 88px 0 45px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+    .strap .mini-title { color: #d0d0d9; text-transform: uppercase; font: 800 11px var(--mono); letter-spacing: .18em; }
+    .strap hr { flex: 1; border: 0; border-top: 1px solid #4c4d57; }
+    .strap .number { color: var(--acid); font: 700 12px var(--mono); }
+    .panel-grid { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(0, .82fr); gap: 17px; align-items: stretch; }
+    .card { border: 1px solid #3a3b4a; background: #1b1c29; border-radius: 21px; padding: 26px 28px; }
+    .card-label { font: 700 11px var(--mono); color: var(--pink); letter-spacing: .14em; }
+    h2 { margin: 13px 0 13px; font-size: clamp(24px, 3.1vw, 37px); line-height: 1.25; letter-spacing: -.07em; word-break: keep-all; }
+    .card-desc { color: #a7a8b4; font-size: 13px; line-height: 1.7; margin: 0; }
+    .name-row { display: flex; gap: 10px; margin-top: 24px; }
+    .name-row input { min-width: 0; flex: 1; height: 48px; border-radius: 10px; border: 1px solid #565768; background: #11121b; padding: 0 14px; color: #fff; outline: none; font-size: 14px; }
+    .name-row input:focus { border-color: var(--acid); }
+    .name-row input::placeholder { color: #6b6c7c; }
+    .sound { padding: 0 18px; height: 48px; min-width: 91px; border: 1px solid #5a5b6a; border-radius: 10px; background: #282938; color: #dedfeb; cursor: pointer; font-size: 13px; font-weight: 800; }
+    .sound[aria-pressed="true"] { border-color: var(--acid); color: var(--acid); }
+    .mini-card { display: flex; flex-direction: column; justify-content: space-between; background: var(--acid); border-radius: 21px; padding: 27px 28px; color: #232433; min-height: 200px; position: relative; overflow: hidden; }
+    .mini-card:after { content: '✳'; position: absolute; font-size: 220px; right: -40px; bottom: -107px; opacity: .17; transform: rotate(-18deg); pointer-events: none; }
+    .mini-card .label { font: 800 11px var(--mono); letter-spacing: .1em; }
+    .mini-card .quote { max-width: 290px; font-size: clamp(22px, 2.7vw, 30px); font-weight: 950; line-height: 1.4; letter-spacing: -.06em; word-break: keep-all; z-index: 1; }
+    .mini-card .quote small { display: block; font-weight: 750; font-size: 14px; margin-top: 12px; color: #5b6036; }
+    .result { margin-top: 18px; display: none; padding: 30px; background: linear-gradient(140deg,#2e2c43,#1f2437); border: 1px solid #65617b; border-radius: 22px; position: relative; overflow: hidden; }
+    .result.show { display: block; animation: rise .5s both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .result:before { content: '✴'; position: absolute; right: 10px; top: -80px; font-size: 230px; color: var(--acid); opacity: .13; }
+    .result-top { display: flex; align-items: center; gap: 10px; color: var(--acid); font: 800 12px var(--mono); letter-spacing: .1em; }
+    .result h3 { font-weight: 950; font-size: clamp(30px, 5vw, 53px); letter-spacing: -.07em; margin: 16px 0 14px; line-height: 1.2; }
+    .result h3 em { color: var(--acid); font-style: normal; }
+    .result p { font-size: 15px; color: #d5d1e5; line-height: 1.75; margin: 0 0 24px; }
+    .result-tags { display: flex; gap: 9px; flex-wrap: wrap; margin-bottom: 25px; }
+    .result-tags span { padding: 9px 12px; border-radius: 100px; border: 1px solid #77738d; font: 12px var(--mono); }
+    .result-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .result-btns button { border: 0; border-radius: 10px; height: 47px; padding: 0 19px; font-weight: 900; font-size: 13px; cursor: pointer; }
+    .result-btns button:first-child { background: var(--acid); color: #25272d; }
+    .result-btns button:nth-child(2) { background: #f1e7f4; color: #272232; }
+    .result-btns button:nth-child(3) { background: #3c3950; color: #e8e5f2; }
+    .ticker { margin-top: 74px; border-top: 1px solid #444754; border-bottom: 1px solid #444754; padding: 19px 0; overflow: hidden; white-space: nowrap; display: flex; }
+    .ticker-track { display: flex; gap: 32px; align-items: center; color: #f6f6ef; font-size: clamp(16px, 2vw, 23px); font-weight: 900; letter-spacing: -.05em; animation: crawl 24s linear infinite; }
+    .ticker-track span { display: flex; align-items: center; gap: 30px; flex-shrink: 0; }
+    .ticker-track b { color: var(--pink); }
+    @keyframes crawl { to { transform: translateX(-50%); } }
+    footer { display: flex; align-items: start; justify-content: space-between; gap: 30px; padding: 29px 0 50px; font-size: 12px; color: #9595a2; line-height: 1.8; }
+    footer p { max-width: 750px; margin: 0; }
+    footer a { color: var(--cyan); text-decoration-color: #86e8ec88; text-underline-offset: 4px; white-space: nowrap; }
+    #toast { position: fixed; bottom: 25px; left: 50%; transform: translate(-50%, 16px); background: #f4f4ee; color: #1b1d26; padding: 14px 20px; border: 1px solid #c7c4d0; border-radius: 13px; font-weight: 800; font-size: 13px; box-shadow: 0 12px 55px #0009; opacity: 0; pointer-events: none; transition: transform .25s, opacity .25s; text-align: center; z-index: 20; width: max-content; max-width: calc(100% - 40px); }
+    #toast.show { opacity: 1; transform: translate(-50%, 0); }
+    #confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; }
+    .scan-progress { margin-top: 14px; height: 7px; background: #77747b; border-radius: 20px; overflow: hidden; display: none; }
+    .scan-progress.active { display: block; }
+    .scan-progress i { display: block; height: 100%; width: 0%; background: var(--acid); border-radius: 20px; transition: width .12s linear; }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 32px; }
+      .hero-copy { max-width: 680px; }
+      .hero-art { max-width: 560px; margin: 0 auto; width: 100%; }
+      h1 { font-size: clamp(53px, 9vw, 77px); }
+      .strap { margin-top: 78px; }
+      .frequency { font-size: clamp(68px, 12vw, 110px); }
+    }
+    @media (max-width: 600px) {
+      .container { width: min(100% - 36px, 480px); }
+      .nav { min-height: 65px; }
+      .live-badge { font-size: 9px; padding: 8px 10px; }
+      main { padding: 44px 0 32px; }
+      .eyebrow { font-size: 10px; }
+      h1 { font-size: clamp(43px, 11.4vw, 62px); line-height: 1.15; margin-top: 21px; }
+      .intro { font-size: 14px; }
+      .chip { font-size: 10px; padding: 9px 10px; }
+      .hero-art { padding: 21px 7px 15px 1px; }
+      .radio { padding: 12px; border-radius: 20px; box-shadow: 0 12px 0 #928d87, 0 18px 0 #373941, 0 33px 40px #05050999; }
+      .screen { border-width: 4px; padding: 16px 12px 15px; }
+      .screen-head { font-size: 9px; }
+      .frequency { font-size: clamp(62px, 17vw, 87px); }
+      .mhz { margin-left: 4px; font-size: 12px; margin-bottom: 7px; }
+      .canvas-wrap { height: 49px; }
+      .radio-actions { padding-top: 16px; }
+      .radio-bottom { font-size: 9px; }
+      .side-sticker { width: 80px; height: 80px; right: -18px; bottom: 0; font-size: 13px; }
+      .spark.star1 { right: -7px; top: -12px; font-size: 49px; }
+      .spark.star2 { left: -12px; bottom: 10px; }
+      .strap { margin: 74px 0 24px; }
+      .panel-grid { grid-template-columns: 1fr; gap: 12px; }
+      .card, .mini-card { padding: 23px; border-radius: 17px; }
+      .mini-card { min-height: 165px; }
+      .result { padding: 23px; }
+      .result-btns { display: grid; grid-template-columns: 1fr 1fr; }
+      .result-btns button { padding: 0 8px; }
+      .result-btns button:last-child { grid-column: 1/-1; }
+      .ticker { margin-top: 60px; }
+      footer { display: block; padding-bottom: 32px; }
+      footer a { display: inline-block; margin-top: 15px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+  <div class="texture" aria-hidden="true"></div>
+  <div class="glow a" aria-hidden="true"></div>
+  <div class="glow b" aria-hidden="true"></div>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <header>
+    <nav class="container nav" aria-label="상단 메뉴">
+      <a class="brand" href="#top" aria-label="합격 주파수 첫 화면으로">
+        <div class="brand-mark">⌁</div>
+        <div class="brand-text">합격 주파수<span>ADMISSION RADIO CLUB</span></div>
+      </a>
+      <div class="live-badge"><span class="dot" aria-hidden="true"></span> 2027 운빨 수신 ON AIR</div>
+    </nav>
+  </header>
+  <main class="container" id="top">
+    <section class="hero" aria-label="강원대 합격 주파수">
+      <div class="hero-copy">
+        <div class="eyebrow">이 주파수… 심상치 않다</div>
+        <h1>강원대<br /><span class="outlined">합격 기운</span><br /><span class="acid">잡았다. 📡</span></h1>
+        <p class="intro">합격 발표는 아직인데, <strong>내 마음은 이미 강원대생.</strong><br />우주 어딘가에서 날아온(?) 합격 기운을 <strong>102.7 MHz</strong>로 수신해 보세요.</p>
+        <div class="hero-chips">
+          <span class="chip acid">🍀 2027학년도 기원</span>
+          <span class="chip pink">✦ 멘탈 케어 100%</span>
+          <span class="chip outline">🔮 과학적 근거 0%</span>
+        </div>
+        <div class="little-note">↗ 손가락으로 주파수 돌려보세요. 은근 중독됨.</div>
+      </div>
+      <div class="hero-art">
+        <span class="spark star1" aria-hidden="true">✳</span><span class="spark star2" aria-hidden="true">✦</span>
+        <div class="radio">
+          <div class="radio-bar"><div class="radio-logo">KANGWON <small>FM</small></div><span class="radio-top-right">UNOFFICIAL RADIO · V.2027</span></div>
+          <div class="screen">
+            <div class="screen-head"><span class="onair"><i></i> LUCKY SIGNAL</span><span>FM / STEREO</span></div>
+            <div class="hz-row"><output class="frequency" id="frequency" for="dial">96.4</output><span class="mhz">MHz</span></div>
+            <div class="canvas-wrap"><canvas id="wave" aria-label="움직이는 라디오 파형"></canvas></div>
+            <div class="screen-bottom"><span>▸ NOW SCANNING...</span><span id="signalText" aria-live="polite">전파를 탐색 중</span></div>
+            <div class="scan-progress" id="scanProgress"><i id="progressFill"></i></div>
+          </div>
+          <div class="tuning">
+            <div class="tuning-label"><label for="dial">◉ FREQUENCY TUNING</label><div class="level">SIGNAL <span class="bars" id="bars"><i></i><i></i><i></i><i></i></span></div></div>
+            <input id="dial" aria-label="88.0부터 108.0 메가헤르츠까지 주파수 조절" type="range" min="88" max="108" step="0.1" value="96.4" />
+            <div class="tick"><span>88.0</span><span>98.0</span><span class="target">▲ 102.7</span><span>108.0</span></div>
+          </div>
+          <div class="radio-actions"><button class="primary" id="receive">⚡ 합격 기운 수신하기</button><button class="auto" id="auto" aria-label="102.7 메가헤르츠로 자동 주파수 맞추기" title="자동 주파수 맞추기">↻</button></div>
+          <p class="radio-bottom">POWERED BY 간절함 × 근거없는 자신감™</p>
+        </div>
+        <div class="side-sticker" aria-label="본 사이트는 순수 기원용">합격<br />시켜<br />주라!!</div>
+      </div>
+    </section>
+    <div class="strap"><span class="mini-title">THE SIGNAL STATION</span><hr /><span class="number">NO. 1027</span></div>
+    <section class="panel-grid" aria-label="수신 설정">
+      <div class="card">
+        <span class="card-label">01 / BEFORE WE START</span>
+        <h2>합격 기운, 누구 앞으로<br />보내드릴까요?</h2>
+        <p class="card-desc">이름을 쓰면 합격 기원 카드에 새겨드립니다. 입력 안 해도 수신 가능!</p>
+        <div class="name-row"><input id="name" type="text" maxlength="16" placeholder="예: 미래의 강원대생" autocomplete="off" aria-label="합격 기원 대상 이름" /><button class="sound" id="sound" type="button" aria-pressed="false">♪ 소리 OFF</button></div>
+      </div>
+      <div class="mini-card"><span class="label">★ UNOFFICIAL PREDICTION</span><div class="quote">“지금 잘하고 있어.<br />그리고 강원대에서<br />닭갈비 먹자.”<small>— 어딘가에서 온 응원 전파</small></div></div>
+    </section>
+    <section class="result" id="result" aria-live="polite" aria-label="합격 기운 수신 결과">
+      <div class="result-top">✦ SIGNAL LOCKED · 102.7 MHZ</div>
+      <h3 id="resultTitle">합격 기운 <em>수신 완료!</em></h3>
+      <p id="resultMessage">강원대에 닿을 때까지 응원할게요.</p>
+      <div class="result-tags"><span>🔋 자신감 +100</span><span>📡 신호 강도 MAX</span><span>💌 응원 유효기간 ∞</span></div>
+      <div class="result-btns"><button id="save" type="button">↓ 합격 기원 카드 저장</button><button id="share" type="button">↗ 친구에게 전파하기</button><button id="again" type="button">↻ 한 번 더 받기</button></div>
+    </section>
+    <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>합격하자 <b>✳</b> 강원대에서 보자 <b>✳</b> 입학식 때 만나 <b>✳</b> 일단 좋은 기운 저장 <b>✳</b></span><span>합격하자 <b>✳</b> 강원대에서 보자 <b>✳</b> 입학식 때 만나 <b>✳</b> 일단 좋은 기운 저장 <b>✳</b></span></div></div>
+  </main>
+  <footer class="container"><p>이 사이트는 강원대학교와 무관한 <strong>비공식 합격 응원·놀이용 페이지</strong>입니다. 표시되는 주파수·메시지는 실제 합격 여부나 합격 확률을 나타내지 않습니다. 결과는 반드시 공식 입학처에서 확인하세요. 개인정보는 서버로 전송하지 않습니다.</p><a href="https://admission.kangwon.ac.kr/admission/index.do" target="_blank" rel="noopener noreferrer">강원대 공식 입학안내 ↗</a></footer>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script>
+    (() => {
+      'use strict';
+      const TARGET = 102.7;
+      const dial = document.getElementById('dial');
+      const display = document.getElementById('frequency');
+      const signal = document.getElementById('signalText');
+      const bars = [...document.querySelectorAll('#bars i')];
+      const receive = document.getElementById('receive');
+      const auto = document.getElementById('auto');
+      const progress = document.getElementById('scanProgress');
+      const progressFill = document.getElementById('progressFill');
+      const result = document.getElementById('result');
+      const toastEl = document.getElementById('toast');
+      const nameInput = document.getElementById('name');
+      let scanning = false, tuned = false, currentSound = false, audioContext, toastTimeout, scanTimer;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const messages = [
+        '강원대 캠퍼스에서 널 기다리는 닭갈비의 기운이 느껴져… 🍗',
+        '우주가 속삭이는 중: 네가 대학생이 되는 장면, 꽤 괜찮은데? 🪐',
+        '합격운 수신 완료. 이제 남은 건 공식 결과와 너의 멋진 미래! ✨',
+        '오늘의 예언: 언젠가 강원대 앞에서 “나 여기 다녀”라고 말하기. 🌱',
+        '수신기 피셜, 넌 지금도 충분히 멋진 지원자임. 🍀',
+        '이 정도 간절함이면 전파도 응원하고 가겠다. 📡'
+      ];
+      let resultMessage = messages[0];
+      function toast(message) { clearTimeout(toastTimeout); toastEl.textContent = message; toastEl.classList.add('show'); toastTimeout = setTimeout(() => toastEl.classList.remove('show'), 2600); }
+      function note(hz, duration=.055, wave='sine') {
+        if (!currentSound) return;
+        try {
+          audioContext = audioContext || new (window.AudioContext || window.webkitAudioContext)();
+          if (audioContext.state === 'suspended') audioContext.resume();
+          const osc = audioContext.createOscillator(), gain = audioContext.createGain(), t = audioContext.currentTime;
+          osc.type = wave; osc.frequency.setValueAtTime(hz, t);
+          gain.gain.setValueAtTime(.0001, t); gain.gain.exponentialRampToValueAtTime(.035, t+.01);
+          gain.gain.exponentialRampToValueAtTime(.0001, t+duration);
+          osc.connect(gain); gain.connect(audioContext.destination); osc.start(t); osc.stop(t+duration+.01);
+        } catch(e) { /* Optional sound; silent fallback */ }
+      }
+      function setFreq(value, play=false) {
+        const f = Math.max(88, Math.min(108, Math.round(Number(value)*10)/10));
+        dial.value = f.toFixed(1); display.textContent = f.toFixed(1);
+        const percent = (f-88)/20*100;
+        dial.style.setProperty('--value', percent+'%');
+        const diff = Math.abs(f-TARGET);
+        tuned = diff < .11;
+        const n = tuned ? 4 : diff < 1.5 ? 3 : diff < 4 ? 2 : 1;
+        bars.forEach((bar, i) => bar.classList.toggle('active', i<n));
+        if (!scanning) signal.textContent = tuned ? '강원대 채널 발견!' : diff < 1.5 ? '앗, 거의 잡혔다!' : '전파를 탐색 중';
+        if (play) note(240+(f-88)*15, .035, 'triangle');
+      }
+      function autoTune(onDone) {
+        if (scanning) return;
+        auto.disabled = true;
+        const start = Number(dial.value), startAt = performance.now();
+        const duration = reducedMotion ? 1 : 1150;
+        const frame = now => {
+          const t = Math.min(1,(now-startAt)/duration);
+          const eased = 1-Math.pow(1-t,3);
+          setFreq(start+(TARGET-start)*eased);
+          if (t<1) requestAnimationFrame(frame);
+          else { setFreq(TARGET); auto.disabled = false; note(780,.17); if (onDone) onDone(); else toast('📡 102.7 MHz! 강원대 채널 잡았다!'); }
+        };
+        requestAnimationFrame(frame);
+      }
+      function confetti() {
+        if (reducedMotion) return;
+        const canvas=document.getElementById('confetti'), ctx=canvas.getContext('2d');
+        const w=canvas.width=window.innerWidth*devicePixelRatio,h=canvas.height=window.innerHeight*devicePixelRatio;
+        const scale=devicePixelRatio, colors=['#d9ff5b','#ff77c8','#86e8ec','#fef2c9','#a99aff'];
+        const pieces=Array.from({length:105},()=>({x:Math.random()*w,y:-Math.random()*h*.8,vy:(2+Math.random()*4)*scale,vx:(Math.random()-.5)*2*scale,r:3+Math.random()*6,angle:Math.random()*6.28,spin:(Math.random()-.5)*.2,c:colors[Math.floor(Math.random()*colors.length)]}));
+        let frames=0;
+        function render() { ctx.clearRect(0,0,w,h);pieces.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.angle+=p.spin;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.angle);ctx.fillStyle=p.c;ctx.fillRect(-p.r*scale,-p.r*.45*scale,p.r*2*scale,p.r*.9*scale);ctx.restore();});if(++frames<160)requestAnimationFrame(render);else ctx.clearRect(0,0,w,h); }
+        requestAnimationFrame(render);
+      }
+      function startScan() {
+        if(scanning) return;
+        scanning=true; result.classList.remove('show'); progress.classList.add('active');progressFill.style.width='0%';
+        receive.disabled=true; receive.textContent='📡 수신 중 · · ·';
+        const start=performance.now();
+        const stages=[[.18,'합격 기운 검색 중...'],[.42,'춘천 하늘 통과 중...'],[.71,'간절함 증폭 중...'],[.92,'행운 파동 거의 도착!']];
+        let prior=-1;
+        scanTimer=setInterval(()=>{
+          const t=Math.min(1,(performance.now()-start)/3850);
+          progressFill.style.width=Math.round(t*100)+'%';
+          const phase=stages.reduce((a,s,i)=>t>=s[0]?i:a,-1);
+          if(phase!==prior){ prior=phase; signal.textContent=phase<0?'행운 신호 읽는 중...':stages[phase][1]; note(390+Math.max(0,phase)*95,.07); }
+          if(t>=1){clearInterval(scanTimer);scanning=false;receive.disabled=false;receive.textContent='✦ 합격 기운 다시 받기';signal.textContent='수신 완료 · 행운 MAX';
+            resultMessage=messages[Math.floor(Math.random()*messages.length)];
+            const name=nameInput.value.trim()||'미래의 강원대생';
+            document.getElementById('resultTitle').replaceChildren(document.createTextNode(name+'님, '));
+            const em=document.createElement('em');em.textContent='기운 수신 완료!';document.getElementById('resultTitle').appendChild(em);
+            document.getElementById('resultMessage').textContent=resultMessage;
+            result.classList.add('show');
+            [523,659,784,1046].forEach((tone,i)=>setTimeout(()=>note(tone,.17),i*140));
+            confetti(); result.scrollIntoView({behavior:reducedMotion?'instant':'smooth',block:'center'});
+            setTimeout(()=>progress.classList.remove('active'),750);
+          }
+        },50);
+      }
+      dial.addEventListener('input',e=>{ if(scanning)return;setFreq(e.target.value,true); });
+      auto.addEventListener('click',()=>autoTune());
+      receive.addEventListener('click',()=>{ if(scanning)return; if(!tuned)autoTune(startScan);else startScan(); });
+      document.getElementById('again').addEventListener('click',()=>{result.classList.remove('show');startScan();});
+      document.getElementById('sound').addEventListener('click',e=>{currentSound=!currentSound;e.currentTarget.setAttribute('aria-pressed',String(currentSound));e.currentTarget.textContent=currentSound?'♫ 소리 ON':'♪ 소리 OFF';if(currentSound)note(660,.15);});
+      async function copyLink() {
+        const url=location.href.split('#')[0].split('?')[0];
+        const text='강원대 합격 주파수 102.7 MHz 📡 나 합격 기운 받았다. 너도 받아가ㅋㅋ\n'+url;
+        try{await navigator.clipboard.writeText(text);toast('📋 링크 복사 완료! 친구한테 전파 ㄱㄱ');}
+        catch(e){const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();toast(ok?'📋 링크 복사 완료!':'공유 링크: '+url);}
+      }
+      document.getElementById('share').addEventListener('click',async()=>{
+        const url=location.href.split('#')[0].split('?')[0];
+        if(navigator.share){try{await navigator.share({title:'강원대 합격 주파수 📡',text:'102.7MHz 합격 기운 받아가ㅋㅋ 🍀',url});return;}catch(e){if(e.name==='AbortError')return;}}
+        copyLink();
+      });
+      function certificate() {
+        const c=document.createElement('canvas');c.width=1080;c.height=1350;const x=c.getContext('2d');
+        x.fillStyle='#151521';x.fillRect(0,0,1080,1350);
+        let g=x.createRadialGradient(850,230,30,850,230,700);g.addColorStop(0,'#364051');g.addColorStop(1,'#151521');x.fillStyle=g;x.fillRect(0,0,1080,1350);
+        x.strokeStyle='#454653';x.lineWidth=3;x.strokeRect(48,48,984,1254);
+        x.fillStyle='#d9ff5b';x.font='900 31px '+getComputedStyle(document.body).fontFamily;x.fillText('✳   ADMISSION RADIO CLUB',93,138);
+        x.font='700 26px monospace';x.fillStyle='#b6b9c2';x.fillText('UNOFFICIAL LUCKY SIGNAL • 2027',93,191);
+        x.fillStyle='#f9f8f5';x.font='900 91px '+getComputedStyle(document.body).fontFamily;x.fillText('강원대 합격 기운',84,361);
+        x.fillStyle='#d9ff5b';x.fillText('수신 완료! 📡',84,482);
+        x.save();x.translate(540,706);x.strokeStyle='#d9ff5b';x.lineWidth=17;x.beginPath();x.arc(0,0,137,0,Math.PI*2);x.stroke();x.lineWidth=2;x.strokeStyle='#ff77c8';for(let i=0;i<24;i++){const a=i*Math.PI/12;x.beginPath();x.moveTo(Math.cos(a)*167,Math.sin(a)*167);x.lineTo(Math.cos(a)*183,Math.sin(a)*183);x.stroke();}x.font='900 84px monospace';x.textAlign='center';x.fillStyle='#fff';x.fillText('102.7',0,12);x.font='700 24px monospace';x.fillStyle='#d9ff5b';x.fillText('MHz',0,57);x.restore();
+        const name=(nameInput.value.trim()||'미래의 강원대생').slice(0,16);
+        x.fillStyle='#ff77c8';x.font='800 27px monospace';x.fillText('CERTIFIED LUCKY LISTENER',92,1001);
+        x.fillStyle='#ffffff';x.font='900 56px '+getComputedStyle(document.body).fontFamily;x.fillText(name+' 님',92,1082);
+        x.font='600 29px '+getComputedStyle(document.body).fontFamily;x.fillStyle='#c8c8d4';x.fillText('좋은 기운, 여기까지 도착했습니다. 🍀',92,1143);
+        x.font='500 20px '+getComputedStyle(document.body).fontFamily;x.fillStyle='#9f9eac';x.fillText('※ 비공식 응원용 / 실제 합격 여부와 무관합니다.',92,1242);
+        const a=document.createElement('a');a.download='강원대_합격기운_1027.png';a.href=c.toDataURL('image/png');a.click();toast('🍀 합격 기원 카드 저장 완료!');
+      }
+      document.getElementById('save').addEventListener('click',certificate);
+      // Ambient visualization: a purely decorative waveform; no external media or microphone input.
+      const canvas=document.getElementById('wave'),ctx=canvas.getContext('2d');let tick=0,ww=0,hh=0;
+      function resizeWave(){const dpr=Math.min(devicePixelRatio||1,2),r=canvas.getBoundingClientRect();canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);ww=r.width;hh=r.height;}
+      new ResizeObserver(resizeWave).observe(canvas);
+      function animateWave(){
+        if(document.visibilityState==='visible' && ww){ctx.clearRect(0,0,ww,hh);const diff=Math.abs(Number(dial.value)-TARGET);const amp=tuned?18:7;const n=84;
+          ctx.beginPath();ctx.lineWidth=2.5;ctx.strokeStyle='#d9ff5b';
+          for(let i=0;i<=n;i++){const xx=ww*i/n;const env=Math.sin(Math.PI*i/n)**1.6;const yy=hh/2+Math.sin(i*.46+tick*.043)*env*amp+Math.sin(i*.16+tick*.028)*env*(amp*.39);i?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy);}ctx.stroke();
+          ctx.beginPath();ctx.lineWidth=1;ctx.strokeStyle='#ff77c888';for(let i=0;i<=n;i++){const xx=ww*i/n;const yy=hh/2+Math.sin(i*.28-tick*.029)*Math.sin(Math.PI*i/n)*((diff<.1)?10:3);i?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy);}ctx.stroke();tick++;}
+        requestAnimationFrame(animateWave);
+      }resizeWave();animateWave();setFreq(96.4);
+    })();
+  </script>
+</body>
+</html>
